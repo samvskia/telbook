@@ -1,0 +1,8 @@
+DROP TABLE IF EXISTS tbl_contacts;
+
+CREATE TABLE tbl_contacts (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    uuid VARCHAR(250) NOT NULL,
+    name VARCHAR(250) NOT NULL,
+    number VARCHAR(250) NOT NULL
+);
