@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Telbook</title>
     <link rel="stylesheet" href="css/style.css">
+    <script data-main="js/config.js" src="js/libs/require.js"></script>
 </head>
 <body>
   <div id="header">
@@ -12,31 +13,12 @@
       </div>
   </div>
   <div id="content">
-      <button>Refresh</button><br/><br/>
+      <button id="refresh">Refresh</button><br/><br/>
       <input type="text" id="name" placeholder="name">
       <input type="text" id="number" placeholder="number">
-      <button>Add</button>
+      <button id="addContact">Add</button>
 
-      <ul>
-          <li>
-              <div>
-                  <span>Name</span>
-                  <span>-</span>
-                  <span>Number</span>
-                  <button>Edit</button>
-                  <button>Delete</button>
-              </div>
-          </li>
-          <li>
-              <div>
-                  <span>Name</span>
-                  <span>-</span>
-                  <span>Number</span>
-                  <button>Edit</button>
-                  <button>Delete</button>
-              </div>
-          </li>
-      </ul>
+      <ul id="contactList"></ul>
   </div>
   <div id="footer"></div>
 </body>
