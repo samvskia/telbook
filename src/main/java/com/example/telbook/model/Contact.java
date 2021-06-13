@@ -8,9 +8,7 @@ import java.util.UUID;
 public class Contact {
 
     private final UUID id;
-    @NotBlank
     private final String name;
-    @NotBlank
     private final String number;
 
     public Contact(@JsonProperty("id") UUID id,

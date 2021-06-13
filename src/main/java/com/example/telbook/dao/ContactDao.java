@@ -19,6 +19,8 @@ public interface ContactDao {
 
     Optional<Contact> selectContactById(UUID id);
 
+    List<Contact> selectAllMatchContacts(Contact contact);
+
     int deleteContactById(UUID id);
 
     int updateContactById(UUID id, Contact contact);

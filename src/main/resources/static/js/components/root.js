@@ -34,6 +34,10 @@ define(function (require) {
         $("#clearInputFields").on("click", function (event) {
             self.clearInputFields();
         });
+
+        $("#searchContact").on("click", function (event) {
+            self.searchContacts();
+        });
     }
 
     Root.prototype.getContacts = function () {
@@ -50,6 +54,33 @@ define(function (require) {
                 console.log("No Contacts");
             }
         });
+    }
+
+    Root.prototype.searchContacts = function () {
+        let self = this;
+        let name = $("#name").val();
+        let number = $("#number").val();
+
+        if (name || number) {
+            let requestData = JSON.stringify({
+                "name": name,
+                "number": number
+            })
+            $.ajax({
+                type: "POST",
+                contentType: 'application/json',
+                data: requestData,
+                url: "api/v1/contact/search",
+                cache: false,
+                success: function (data) {
+                    console.log("Founded results!");
+                    self.listContacts(data);
+                },
+                error: function (error) {
+                    console.log("Error!");
+                }
+            });
+        }
     }
 
     Root.prototype.listContacts = function (data) {

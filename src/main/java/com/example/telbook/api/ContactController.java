@@ -2,6 +2,7 @@ package com.example.telbook.api;
 
 import com.example.telbook.model.Contact;
 import com.example.telbook.service.ContactService;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,8 +27,14 @@ public class ContactController {
     }
 
     @GetMapping
-    public List<Contact> getAllPeople() {
+    public List<Contact> getAllContacts() {
         return this.contactService.getAllContacts();
+    }
+
+    @RequestMapping("/search")
+    @PostMapping
+    public List<Contact> searchContacts(@Valid @NotNull @RequestBody Contact contact) {
+        return this.contactService.searchContacts(contact);
     }
 
     @GetMapping(path = "{id}")

@@ -46,6 +46,17 @@ public class ContactDataAccessService implements ContactDao {
     }
 
     @Override
+    public List<Contact> selectAllMatchContacts(Contact contact) {
+        String sql = "SELECT uuid, name, number FROM tbl_contacts WHERE name LIKE '%" + contact.getName() + "%' AND number LIKE '%" + contact.getNumber() + "%'";
+        return this.jdbcTemplate.query(sql, (resultSet, i) -> {
+            UUID uuid = UUID.fromString(resultSet.getString("uuid"));
+            String name = resultSet.getString("name");
+            String number = resultSet.getString("number");
+            return new Contact(uuid, name, number);
+        });
+    }
+
+    @Override
     public int deleteContactById(UUID id) {
         String sql = "DELETE FROM tbl_contacts WHERE uuid=?";
         Object[] params = new Object[] {id};
