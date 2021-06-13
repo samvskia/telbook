@@ -19,7 +19,7 @@ public interface ContactDao {
 
     Optional<Contact> selectContactById(UUID id);
 
-    List<Contact> selectAllMatchContacts(Contact contact);
+    List<Contact> selectAllMatchContacts(String text);
 
     int deleteContactById(UUID id);
 

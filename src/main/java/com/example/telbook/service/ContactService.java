@@ -31,8 +31,8 @@ public class ContactService {
         return this.contactDao.selectContactById(id);
     }
 
-    public List<Contact> searchContacts(Contact contact) {
-        return this.contactDao.selectAllMatchContacts(contact);
+    public List<Contact> searchContacts(String text) {
+        return this.contactDao.selectAllMatchContacts(text);
     }
 
     public int deleteContact(UUID id) {

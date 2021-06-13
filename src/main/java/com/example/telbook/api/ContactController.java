@@ -33,8 +33,8 @@ public class ContactController {
 
     @RequestMapping("/search")
     @PostMapping
-    public List<Contact> searchContacts(@Valid @NotNull @RequestBody Contact contact) {
-        return this.contactService.searchContacts(contact);
+    public List<Contact> searchContacts(@RequestBody String text) {
+        return this.contactService.searchContacts(text);
     }
 
     @GetMapping(path = "{id}")

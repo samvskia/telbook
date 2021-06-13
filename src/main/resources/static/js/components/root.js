@@ -58,18 +58,13 @@ define(function (require) {
 
     Root.prototype.searchContacts = function () {
         let self = this;
-        let name = $("#name").val();
-        let number = $("#number").val();
+        let text = $("#search").val();
 
-        if (name || number) {
-            let requestData = JSON.stringify({
-                "name": name,
-                "number": number
-            })
+        if (text) {
             $.ajax({
                 type: "POST",
-                contentType: 'application/json',
-                data: requestData,
+                contentType: 'text/plain',
+                data: text,
                 url: "api/v1/contact/search",
                 cache: false,
                 success: function (data) {
@@ -159,23 +154,26 @@ define(function (require) {
     }
 
     Root.prototype.deleteContact = function (id) {
-        let self = this;
-        $.ajax({
-            type: "DELETE",
-            url: "api/v1/contact/" + id,
-            cache: false,
-            success: function (data) {
-                console.log("Contact deleted!");
-                self.getContacts();
-                self.clearInputFields();
-            },
-            error: function (error) {
-                console.log("Error!");
-            }
-        });
+        if ($(".selected").length) {
+            let self = this;
+            $.ajax({
+                type: "DELETE",
+                url: "api/v1/contact/" + id,
+                cache: false,
+                success: function (data) {
+                    console.log("Contact deleted!");
+                    self.getContacts();
+                    self.clearInputFields();
+                },
+                error: function (error) {
+                    console.log("Error!");
+                }
+            });
+        }
     }
 
     Root.prototype.clearInputFields = function () {
+        $("#search").val("");
         $("#name").val("");
         $("#number").val("");
         $("tr").removeClass("selected");
