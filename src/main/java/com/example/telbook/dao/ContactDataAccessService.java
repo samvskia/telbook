@@ -47,12 +47,19 @@ public class ContactDataAccessService implements ContactDao {
 
     @Override
     public int deleteContactById(UUID id) {
-
+        String sql = "DELETE FROM tbl_contacts WHERE uuid=?";
+        Object[] params = new Object[] {id};
+        int[] types = new int[] { Types.VARCHAR};
+        this.jdbcTemplate.update(sql, params, types);
         return 0;
     }
 
     @Override
     public int updateContactById(UUID id, Contact contact) {
+        String sql = "UPDATE tbl_contacts SET name=?, number=? WHERE uuid=?";
+        Object[] params = new Object[] {contact.getName(), contact.getNumber(), id};
+        int[] types = new int[] { Types.VARCHAR, Types.VARCHAR, Types.VARCHAR};
+        this.jdbcTemplate.update(sql, params, types);
         return 0;
     }
 }

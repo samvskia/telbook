@@ -1,0 +1,13 @@
+#contactTable {
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+#contactTable tr th, #contactTable tr td{
+    padding: 5px;
+    border: 1px solid grey;
+}
+
+#contactTable tbody tr.selected{
+    background: rgba(218, 150, 32, 0.93);
+}

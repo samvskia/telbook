@@ -13,12 +13,24 @@
       </div>
   </div>
   <div id="content">
-      <button id="refresh">Refresh</button><br/><br/>
+      <button id="refresh">Show all</button><br/><br/>
       <input type="text" id="name" placeholder="name">
       <input type="text" id="number" placeholder="number">
+      <button id="clearInputFields">Clear</button>
+      <button id="searchContact">Search</button><br/><br/>
       <button id="addContact">Add</button>
+      <button id='editContact'>Edit</button>
+      <button id='deleteContact'>Delete</button>
 
-      <ul id="contactList"></ul>
+      <table id="contactTable">
+          <thead>
+          <tr>
+              <th>Name</th>
+              <th>Number</th>
+          </tr>
+          </thead>
+          <tbody></tbody>
+      </table>
   </div>
   <div id="footer"></div>
 </body>
